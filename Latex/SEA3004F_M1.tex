@@ -27,8 +27,8 @@
 \makeatletter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
-\pdfpageheight\paperheight
-\pdfpagewidth\paperwidth
+% \pdfpageheight\paperheight
+% \pdfpagewidth\paperwidth
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
@@ -50,14 +50,14 @@
 \usepackage{listings}
 
 % This allows to change color of symbols in math
-\newcommand*{\mathcolor}{}
-\def\mathcolor#1#{\mathcoloraux{#1}}
-\newcommand*{\mathcoloraux}[3]{%
-  \protect\leavevmode
-  \begingroup
-    \color#1{#2}#3%
-  \endgroup
-}
+% \newcommand*{\mathcolor}{}
+% \def\mathcolor#1#{\mathcoloraux{#1}}
+% \newcommand*{\mathcoloraux}[3]{%
+%   \protect\leavevmode
+%   \begingroup
+%     \color#1{#2}#3%
+%   \endgroup
+% }
 
 \makeatother
 
@@ -65,9 +65,9 @@
 \renewcommand{\lstlistingname}{Listing}
 
 \begin{document}
-\title[M1 ]{Mathematical and computational methods for GFD}
-\author{Module 1}
-\institute[UCT]{Department of Oceanography}
+\title[M1]{Mathematical and computational methods for GFD}
+\author{Department of Oceanography}
+\institute[UCT]{University of Cape Town}
 \date{SEA3004F}
 \makebeamertitle
 
@@ -109,16 +109,16 @@ of Annual Reviews....}
 
 \begin{columns}[t]
 
-\column{6cm}
+\column{8cm}
 
-\emph{\tiny{In the year 1891, Señor Dr. Luis Carranza, President
+\emph{\tiny{In the year 1891, Se\~nor Dr. Luis Carranza, President
 of the Lima Geographical Society, contributed a small article to the
 Bulletin of that Society, calling attention to the fact that a counter-current
 flowing from north to south had been observed between the ports of
 Paita and Pacasmayo. The Paita sailors, who frequently navigate along
 the coast in small craft, either to the north or the south of that
-port, name this counter-current the current of \textquotedblleft El
-Niño\textquotedblright{} (the Child Jesus) because it has been observed
+port, name this counter-current the current of El
+Ni\~{n}o (the Child Jesus) because it has been observed
 to appear immediately after Christmas. As this counter-current has
 been noticed on different occasions, and its appearance along the
 Peruvian coast has been concurrent with rains in latitudes where it
@@ -129,7 +129,7 @@ over the climatic conditions of that part of the world.}}
 
 \column{6cm}
 
-\includegraphics[width=6cm]{../figures/M1/philander_book}
+\includegraphics[width=5cm]{../figures/M1/philander_book}
 \end{columns}
 
 \end{frame}
@@ -373,55 +373,60 @@ should be considered in an abstract way)}{\small\par}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Scalars in ocean and atmosphere sciences}
+\begin{frame}{Scalar fields in ocean and atmosphere sciences}
 
 \begin{itemize}
-\item The typical scalars are temperature, pressure, humidity, irradiance,
-precipitation, salinity, nutrient concentrations, abundances of organisms,
-etc. \textbf{Scalars may be constants, but also functions.}
-\item Scalars can be \textbf{scalar fields}, maps of values at certain locations
-and time: $T(x,y,z,t)$ $\Rightarrow$ \textbf{multidimensional arrays}
-\item Scalar fields are usually represented with lines in the 1-D space
-and contour lines or shading in the 2-D space
-
-\begin{itemize}
-\item a \textbf{timeseries} is the time evolution of the scalar value at
-a fixed position, $T(x_{0},y_{0},z_{0},t)=f\left(t\right)$
-\item a \textbf{profile} shows the variation in the vertical dimension $T(x_{0},y_{0},z,t_{0})=f\left(z\right)$ 
-\item horizontal slices at a given time $T(x,y,z_{0},t_{0})=f\left(x,y\right)$
-are called \textbf{maps} and vertical slices $T(x,y_{0},z,t_{0})$
-or $T(x_{0},y,z,t_{0})$ are called \textbf{sections }(zonal and meridional,
-respectively)
-\item the combination of time and space coordinates gives a special map
-called H\"ovm\"oller plot (originally only referred to $T(x,y_{0},z_{0},t)$
-or $T(x_{0},y,z_{0},t)$)
-\end{itemize}
+\item The typical scalar variables are temperature, wind, pressure, humidity, irradiance, precipitation, salinity, nutrient concentrations, abundance of organisms, etc. 
+\item \textbf{Scalar fields} are \textbf{multidimensional objects}: containers of values at certain points in space and time: $T(x,y,z,t)$
+\item 2-D scalar fields are represented with contour lines or shadings (heat maps)
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Examples of scalar physical fields (profiles)}
 
-\begin{columns}[t]
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Examples of scalar variables (time series)}
 
+\begin{columns}[c]
 
 \column{9cm}
+\includegraphics[width=9cm]{figures/M1/timeseries.png}
 
-\includegraphics[width=9cm]{../figures/M1/Profiles_WOA13_ODV}
-
-\column{4cm}
+\column{6cm}
 \begin{itemize}
-\item Depth profiles at various points in the world ocean from the World
-Ocean Atlas (WOA13) gridded dataset
-\item Produced with Ocean Data View
+\item a \textbf{time series} is the time evolution of a scalar field at
+a fixed position, $T(x_{0},y_{0},z_{0},t)=f\left(t\right)$
+\item Simulated time series of near surface current speeds (left-hand y-axes) plotted against (a) significant wave height (Hs), (b) wave-induced force (Fw) (de Vos et al., 2023).
+\item Produced with Matlab. \textbf{Q: what is missing in this plot?}
 \end{itemize}
+
 \end{columns}
 
 \end{frame}
 
-\begin{frame}{Examples of scalar physical fields (maps)}
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Examples of scalar  (profiles)}
 
-\begin{columns}[t]
+\begin{columns}[c]
 
+\column{9cm}
+\includegraphics[width=9cm]{../figures/M1/Profiles_WOA13_ODV}
+
+\column{6cm}
+\begin{itemize}
+\item a \textbf{profile} shows the field in the vertical dimension at a fixed moment in time $T(x_{0},y_{0},z,t_{0})=f\left(z\right)$ 
+\item Depth profiles at various points in the world ocean from the World
+Ocean Atlas gridded dataset
+\item Produced with Ocean Data View
+\end{itemize}
+
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Examples of scalar 2-D fields (maps)}
+
+\begin{columns}[c]
 
 \column{9cm}
 
@@ -429,34 +434,35 @@ Ocean Atlas (WOA13) gridded dataset
 
 \column{5cm}
 \begin{itemize}
-\item Temperature maps at various depth from the World Ocean Atlas (WOA13)
-gridded dataset
-\item The first 4 graphs are slices at standard depths; the last one is
-an isosurface at the bottom
+\item Horizontal slices at a given time $T(x,y,z_{0},t_{0})=f\left(x,y\right)$
+are called \textbf{maps}
+\item Temperature maps at various depth from the World Ocean Atlas
+gridded dataset. The first 4 graphs are slices at given depths; the last one is
+an \emph{isosurface} at the bottom 
 \item Produced with Ocean Data View
 \end{itemize}
 \end{columns}
 
 \end{frame}
 
-\begin{frame}{Examples of scalar biogeochemical fields (maps)}
+\begin{frame}{Examples of scalar 2-D biogeochemical fields (maps)}
 
-\begin{columns}[t]
+\begin{columns}[c]
 
 
 \column{7cm}
 
 \vspace{-0.5cm}
-\includegraphics[width=7cm]{../figures/M1/Oxygen_map_WOA9_python}
+\includegraphics[width=6cm]{../figures/M1/Oxygen_map_WOA9_python}
 
-\includegraphics[width=7cm]{../figures/M1/Phosphate_map_WOA9_python}
+\includegraphics[width=6cm]{../figures/M1/Phosphate_map_WOA9_python}
 
 \column{6cm}
 \begin{itemize}
 \item Surface mean annual concentrations of oxygen and phosphate from the
-World Ocean Atlas (WOA13) gridded dataset
-\item This is a contour filled plot. The colormap is discrete and it is
-possible to appreciate the values
+World Ocean Atlas gridded dataset
+\item This is a contour filled plot. The colormap is discretized and it is
+easier to read the values
 \item Produced with python 
 \end{itemize}
 \end{columns}
@@ -465,33 +471,35 @@ possible to appreciate the values
 
 \begin{frame}{Examples of scalar fields (sections)}
 
-\begin{columns}[t]
-
+\begin{columns}[c]
 
 \column{9cm}
-
 \includegraphics[width=9cm]{../figures/M1/Sections_WOA13_ODV}
 
-\column{3.5cm}
+\column{5cm}
 \begin{itemize}
+\item Vertical slices $T(x,y_{0},z,t_{0})$
+or $T(x_{0},y,z,t_{0})$ are called \textbf{sections }(zonal and meridional,
+respectively)
 \item Temperature, Nitrate and oxygen concentration in the Atlantic from
-the World Ocean Atlas (WOA13) gridded dataset
+the World Ocean Atlas gridded dataset
 \item Produced with Ocean Data View
 \end{itemize}
 \end{columns}
 
 \end{frame}
 
-\begin{frame}{The H\"ovm\"oller plot}
+\begin{frame}{The H\"ovm\"oller plot: mixing time and space}
 
 \begin{center}
 \includegraphics[width=9cm]{../figures/M1/Hoevmoeller_PELAGOS_matlab}
 \par\end{center}
 \begin{itemize}
-\item Iron concentration at surface and in the Equatorial Undercurrent (EUC)
-in the Pacific Ocean at the equator. The slope of the stripes indicate
-the speed of the EUC that carries Fe to the Eastern Pacific.
-\item Produced with Matlab/Matlab
+\item \small{The combination of time and space coordinates gives a special map
+called H\"ovm\"oller plot (typically $T(x,y_{0},z_{0},t)$
+or $T(x_{0},y,z_{0},t)$)}
+\item \footnotesize{Iron concentration at surface and in the Equatorial Undercurrent (EUC) in the Pacific Ocean at the equator. The slope of the stripes indicate the speed of the EUC th   at carries Fe to the Eastern Pacific.}
+\item \footnotesize{Produced with Matlab} 
 \end{itemize}
 \end{frame}
 
@@ -516,13 +524,17 @@ curl }(the wind stress curl)
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Examples of oceanic vector fields}
+\begin{frame}{Atmospheric fields: wind stress}
+\includegraphics[scale=0.4]{../figures/M1/MP_10_02_wstress}
 
+Wind stress intensity (scalar) and wind vectors (Marshall and Plumb,
+Fig. 10.2)
+\end{frame}
+
+\begin{frame}{Examples of oceanic vector fields}
 \begin{columns}[t]
 
-
 \column{8cm}
-
 \includegraphics[width=8cm]{../figures/M1/vector_noagulhas}
 
 \column{4cm}
@@ -536,17 +548,8 @@ been removed and (b) for the 'realistic' case
 
 \end{frame}
 
-\begin{frame}{Atmospheric fields: wind stress}
-
-\includegraphics[scale=0.4]{../figures/M1/MP_10_02_wstress}
-
-Wind stress intensity (scalar) and wind vectors (Marshall and Plumb,
-Fig. 10.2)
-\end{frame}
 
 \begin{frame}{Vectors in maths}
-
-
 \framesubtitle{Practical: Chapter 4, C. Moler, Experiments with Matlab, http://www.mathworks.com/moler/exm,
 free e-book}
 \begin{definition}
@@ -556,14 +559,13 @@ vectors and matrices
 
 \begin{columns}[t]
 
-
 \column{8cm}
 \begin{itemize}
 \item {\footnotesize{}The most simple example of a vector is expressed by
 the coordinates of a point on the Cartesian plane. The point is indicated
 by a column vector with 2 components (or elements), one for each coordinate.
 They are grouped with brackets. It is customary to indicate a point
-with $\left(\right)$, and the components of a vector with $\left\langle \right\rangle $ }{\footnotesize\par}
+with $\left(\right) \, \left[\right]$, and the components of a vector with $\left\langle \right\rangle $ }{\footnotesize\par}
 \item {\footnotesize{}Note that there is no limit to the number of components.
 Vectors in physics are intuitively linked to spatial (+ time) dimensions
 but they have to be thought as abstract data structures very useful
@@ -599,29 +601,6 @@ v_{n}
 
 \end{frame}
 
-\begin{frame}{Vector components}
-
-\begin{columns}[t]
-
-
-\column{7cm}
-
-\includegraphics[clip,scale=0.45]{../figures/M1/MP-5_20_zonal_winds}
-
-\column{5cm}
-\begin{itemize}
-\item Important consideration: \uline{the components of a vector are
-scalars}
-\item Annual \textbf{zonal} mean of the \textbf{wind zonal component} as
-a function of height. The two mid-latitude jet streams are visible,
-as well as the major structures of Easterlies and Westerlies in the
-lower troposphere
-\item From Marshall and Plumb (Fig. 5.20)
-\end{itemize}
-\end{columns}
-
-\end{frame}
-
 \begin{frame}{Vectors in the 3-dimensional space}
 
 \begin{columns}[t]
@@ -653,23 +632,51 @@ $\vec{a}=\mathbf{a}=\left(a_{1},a_{2},a_{3}\right)=\left(a_{x},a_{y},a_{z}\right
 
 \end{frame}
 
-\begin{frame}{Vector sign, addition, and subtraction}
+\begin{frame}{Vector components}
+\begin{columns}[t]
+
+\column{7cm}
+
+\includegraphics[clip,scale=0.45]{../figures/M1/MP-5_20_zonal_winds}
+
+\column{6cm}
+\begin{itemize}
+\item Vectors have \textbf{sense} (the arrow), \textbf{direction} (the line), and \textbf{magnitude} (the line's length). \uline{The components of a vector are scalars}, and you can plot them for each direction.
+\item \small{Annual \textbf{zonal} mean of the \textbf{wind zonal component} as
+a function of height. The two mid-latitude jet streams are visible,
+as well as the major structures of Easterlies and Westerlies in the
+lower troposphere (from Marshall and Plumb Fig. 5.20)}
+\end{itemize}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Vector \emph{sense}, addition, and subtraction}
 
 \begin{itemize}
-\item The negative of a vector has the same magnitude but negative components
+\item The negative of a vector has the opposite sense: same magnitude but negative components
 \item The sum of 2 vectors is the sum of the elements and \textbf{the result
 is a vector}
 \[
 \mathbf{x}+\mathbf{y}=\begin{bmatrix}x_{1} & x_{2} & x_{3}\end{bmatrix}+\begin{bmatrix}y_{1} & y_{2} & y_{3}\end{bmatrix}=\begin{bmatrix}x_{1}+y_{1} & x_{2}+y_{2} & x_{3}+y_{3}\end{bmatrix}
 \]
-\item It is geometrically interpreted as the \emph{parallelogram} combination
-of the two vectors when connected by the tails\\
-\ \ \ \ \ \ \ \includegraphics[scale=0.4]{../figures/M1/ParallelogramLaw}\textbf{}\\
-\textbf{\footnotesize{}Questions}{\footnotesize{} (check the resources
-on Vula for the answers): 1) What happens if the two vectors are on
-a straight angle? 2) How do you compute the difference? 3) And if
-you multiply the vector by a scalar?}{\footnotesize\par}
+It is geometrically interpreted as the \emph{parallelogram} combination
+of the two vectors when connected by the tails
 \end{itemize}
+\begin{columns}[c]
+  \begin{column}{0.5\textwidth}
+    \centering
+    \includegraphics[scale=0.4]{../figures/M1/ParallelogramLaw}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \footnotesize{ \textbf{Questions}: 
+    \begin{enumerate}
+        \item What happens if the two vectors are at a right angle?
+        \item How do you compute the difference?
+        \item What is the result if you multiply a vector by a scalar?
+    \end{enumerate}}
+  \end{column}
+\end{columns}
 \end{frame}
 
 
@@ -764,8 +771,7 @@ matrix is not the inverse!)}{\footnotesize\par}
 \begin{itemize}
 \item Arithmetic operators (sum and difference)q are applied quite naturally
 to vectors/matrices, \textbf{provided that they are of the same size!}
-The same for the multiplication by a scalar\footnote{In maths, there is usually no symbol for multiplication. A central
-dot is sometimes used $s\cdot x_{1}$}
+The same for the multiplication by a scalar\footnote{In math, there is usually no  operator for the multiplication}
 \item They are all performed element-by-element
 \begin{align*}
 \mathbf{x}+\mathbf{y} & =\begin{pmatrix}x_{1}\\
@@ -850,7 +856,7 @@ is not anymore tedious as it used to be
 
 \section{Operations with vectors and matrices}
 \begin{frame}{Why vector operations are important in upwelling regions?}
-
+\centering
 \includegraphics[scale=0.3]{../figures/M1/Locations-of-significant-coastal-upwelling-regions-in-the-world-ocean}
 
 Upwelling regions in the world ocean. (Kaempf and Chapman, 2016, The
