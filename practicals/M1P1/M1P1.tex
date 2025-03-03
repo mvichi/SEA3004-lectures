@@ -1,0 +1,138 @@
+%% LyX 2.3.6 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[a4paper,english]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\pdfpageheight\paperheight
+\pdfpagewidth\paperwidth
+
+
+\makeatother
+
+\usepackage{babel}
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Listing}
+
+\begin{document}
+\title{SEA3004F M1P1: Matrix manipulation}
+\author{Ocean and Atmosphere Dynamics}
+\maketitle
+
+\section{Tutorial on matrix operations and multiplication}
+
+\subsection{Matrix syntax\label{subsec:Matrix-syntax}}
+
+\textbf{The first component of the assignment is to practice the examples
+shown in Chapter 4 from Moler's textbook. }This will help you to familiarize
+with the syntax and the matrix operations done in class. Download
+the zip file and extract it in a local folder named M1P1. 
+
+There is a script that contains all the commands (\texttt{matrices\_recap.m}).
+When you open it, you will be asked to convert it to a \emph{livescript}.
+We will explain in class what it means and how they work. You used
+livescripts when practicing the matlab tutorial. 
+
+There is an advantage of having a command line, because you can test
+commands and check the output. Do not copy and paste the commands,
+but type them, to familiarize with the syntax. You can use this script
+during the week to learn at your own pace how to create matrix objects
+and manipulate them (the paragraph on the determinant is not part
+of the syllabus, but you are welcome to practice it). 
+
+\subsection{Rotation}
+
+Matrix-matrix or matrix-vector multiplications are introduced through
+the rotation of plane figures using a 2x2 matrix. This is an excerpt
+from the lecture notes to refresh the rotation matrix definition:
+\begin{itemize}
+\item rotation by an angle $\theta$ is a \emph{linear transformation} and
+it can be expressed as a matrix product
+\item {\small{}we can derive the transformation matrix from the transformation
+of the coordinate bases $I_{2}$
+\[
+\mathbf{R_{\theta}}=\left[rot_{\theta}\left(\begin{bmatrix}1\\
+0
+\end{bmatrix}\right)\ rot_{\theta}\left(\begin{bmatrix}0\\
+1
+\end{bmatrix}\right)\right]
+\]
+}{\small\par}
+\item {\small{}The generic form of a rotation matrix is
+\[
+\mathbf{R_{\theta}}=\begin{bmatrix}\cos\theta & -\sin\theta\\
+\sin\theta & \cos\theta
+\end{bmatrix}
+\]
+}{\small\par}
+\item The rotation of a vector $\mathbf{v}_{0}$ is $\mathbf{v}'=\mathbf{R}_{\theta}\mathbf{v}_{0}$
+\end{itemize}
+In order to create the matrix in octave/MATLAB, you need to know the
+syntax.
+
+The script \texttt{house.m} contains a matrix of point coordinates
+that are shaped like a house. Open it in the editor and check the
+syntax of functions. You can inspect the matrix simply by calling
+the function \texttt{house} (it is a \emph{function}, so it returns
+another object as output, which is the matrix). You can plot the matrix
+joining the dots using the script \texttt{dot2dot} giving the matrix
+as input argument and then print the figure.
+
+Have a look at what \texttt{house} and \texttt{dot2dot} do by calling
+the editor:
+\begin{lstlisting}[language=Matlab,frame=lines]
+>> edit house.m
+>> edit dot2dot.m
+\end{lstlisting}
+
+You can rotate the house by applying a matrix-matrix multiplication
+with a rotation matrix using the script \texttt{wiggle} or \texttt{wiggle\_o}
+(if you use octave). These are all the commands to be tested (the
+output is not shown)
+
+\begin{lstlisting}[language=Matlab,frame=lines]
+>> house
+>> figure
+>> dot2dot(house)
+>> print -dpng HOUSE.png
+>> wiggle(house)
+\end{lstlisting}
+
+There is a button on the figure to close it. When executed in the
+livescript, it will generate an external figure, and then the last
+frame will be included in your livescript.
+
+In MATLAB and octave, you can create a new figure and save its content
+with the following commands
+
+\begin{lstlisting}[language=Matlab,frame=lines]
+>> figure(1)
+ % ... plot commands ...
+>> print -f1 -dpng FIGURENAME.png
+\end{lstlisting}
+
+To create another figure, change the \emph{handle} number in the argument
+of the \texttt{figure} function (for instance, \texttt{figure(2)}).
+
+\section{Assignment: Rotation of a wind vector \label{sec:How-to-present}}
+
+Write the code to perform the following operations. 
+\begin{enumerate}
+\item create the matrix $\mathbf{V}$ holding the point coordinates (-1,-5),
+(-1,5), (-3,5), (0,8), (3,5), (1,5), (1,-5) to create a complete drawing
+of a wind vector
+\item plot the matrix with \texttt{dot2dot} and save the figure in PNG format
+\item Create a rotation matrix $\mathbf{G}$ for the angle $\theta=-\pi+\pi/6$
+\item Apply the rotation to matrix $\mathbf{V}$ to obtain the new matrix
+$\mathbf{W=GV}$, plot the result with \texttt{dot2dot} and save the
+figure in PNG format
+\end{enumerate}
+\textbf{Submit the livescript contaning the same number of sections
+as in this document and the figures. There must be comments explaining
+what each piece of code does (it is mostly for you, so you will be
+able to come back again and study for the final exam).}
+\end{document}
