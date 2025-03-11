@@ -108,7 +108,7 @@ plot3(XX,YY,P)
 
 \column{6cm}
 
-\includegraphics[width=5cm]{figures/M3/peaks}
+\includegraphics[width=5cm]{../figures/M3/peaks.png}
 
 Note that the field can be ``rotated'' by clicking on the highlighted
 button in the menu
@@ -148,7 +148,7 @@ print -dpng -r200 scalr_field_temperature.png
 
 \column{9cm}
 
-\includegraphics[width=9cm]{figures/M1/Temperature_maps_WOA13_ODV}
+\includegraphics[width=9cm]{../figures/M1/Temperature_maps_WOA13_ODV.png}
 
 \column{3.5cm}
 \begin{itemize}
@@ -169,9 +169,9 @@ is an iso-surface (bottom)}{\small\par}
 \column{7cm}
 
 \vspace{-0.5cm}
-\includegraphics[width=7cm]{figures/M1/Oxygen_map_WOA9_python}
+\includegraphics[width=7cm]{../figures/M1/Oxygen_map_WOA9_python}
 
-\includegraphics[width=7cm]{figures/M1/Phosphate_map_WOA9_python}
+\includegraphics[width=7cm]{../figures/M1/Phosphate_map_WOA9_python}
 
 \column{5cm}
 \begin{itemize}
@@ -191,7 +191,7 @@ possible to appreciate the values.
 
 \column{9cm}
 
-\includegraphics[width=9cm]{figures/M1/Sections_WOA13_ODV}
+\includegraphics[width=9cm]{../figures/M1/Sections_WOA13_ODV}
 
 \column{3.5cm}
 \begin{itemize}
@@ -231,7 +231,7 @@ produces vector fields
 
 \column{8cm}
 
-\includegraphics[width=10cm]{figures/M3/example_vector_field}
+\includegraphics[width=10cm]{../figures/M3/example_vector_field}
 
 \column{4cm}
 \begin{itemize}
@@ -249,7 +249,7 @@ the vector
 
 \begin{frame}{Atmospheric fields: wind stress}
 
-\includegraphics[scale=0.4]{figures/M1/MP_10_02_wstress.jpg}
+\includegraphics[scale=0.4]{../figures/M1/MP_10_02_wstress.jpg}
 
 {\footnotesize{}This field is derived from observations that have
 been blended with a numerical model to obtain a regular grid. Wind
@@ -262,13 +262,9 @@ stress intensity (scalar) and wind vectors (Marshall and Plumb, Fig.
 \begin{frame}{Scalar and vector operators}
 
 \begin{itemize}
-\item It is possible and useful to describe any scalar and vector field
-(sea surface temperature in the South Atlantic or the Benguela velocity
-field) by means of certain operators that provide quantitative indications
-of their features
-\item This is simpler to understand in the case of a mountain topography
-or bathymetry along the coast: how do we know the steepness of the
-mountain we are going to climb?
+\item It is possible and useful to describe any scalar and vector field (sea surface temperature in the South Atlantic or the Benguela velocity
+field) by means of certain operators that provide quantitative indications of their features
+\item This is simpler to understand in the case of a mountain topography or bathymetry along the coast: how do we know the steepness of the mountain we are going to climb?
 \item In the case of vector fields we will find out that some major relationships
 between wind and currents can be obtained by rearranging the dynamical
 equations using \textbf{vector operators}
@@ -301,7 +297,7 @@ $\phi(x,y)$ for latitude and $\lambda(x,y)$ for longitude.
 
 \begin{frame}{Fields and coordinate systems}
 
-\includegraphics[scale=0.3]{figures/M3/dataset-diagram}
+\includegraphics[scale=0.3]{../figures/M3/dataset-diagram}
 
 {\footnotesize{}Geoscientific fields are matrices that are referenced
 to a system of coordinate. In the example above, sea surface temperature
@@ -336,8 +332,8 @@ about the field if we compute the }\textbf{\footnotesize{}gradients}{\footnotesi
 
 \begin{figure}[t!]\vspace{-1cm}
 
-\includegraphics[width=5cm]{figures/M3/NCAR_slp_lastdec}\\
-\includegraphics[width=5cm]{figures/M3/NCAR_slp_lastdec_line}
+\includegraphics[width=5cm]{../figures/M3/NCAR_slp_lastdec}\\
+\includegraphics[width=5cm]{../figures/M3/NCAR_slp_lastdec_line}
 
 \end{figure}
 \end{columns}
@@ -370,8 +366,8 @@ the coordinate system
 
 \begin{figure}[t!]\vspace{-1cm}
 
-\includegraphics[width=5cm]{figures/M3/NCAR_slp_Ygrad_lastdec}\\
-\includegraphics[width=5cm]{figures/M3/NCAR_slp_Xgrad_lastdec}\end{figure}
+\includegraphics[width=5cm]{../figures/M3/NCAR_slp_Ygrad_lastdec}\\
+\includegraphics[width=5cm]{../figures/M3/NCAR_slp_Xgrad_lastdec}\end{figure}
 \end{columns}
 
 \end{frame}
@@ -405,7 +401,7 @@ the component of the vector along each direction
 \item Considering the wind vector field $\mathbf{U}=\left(u,v,w\right)$,
 we can apply the gradient to each scalar component
 \item The gradient of the wind vector field is thus a matrix , where each
-row represents the gradient applied to every component
+row represents the gradient applied to every component. This is also called the \emph{Jacobian} matrix.
 \[
 \nabla\mathbf{U}=\begin{bmatrix}\frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} & \frac{\partial u}{\partial z}\\
 \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y} & \frac{\partial v}{\partial z}\\
@@ -471,7 +467,7 @@ fields, you can draw any closed line and you will always have an equal
 flow through the line
 \end{itemize}
 \begin{center}
-\includegraphics[scale=0.15]{figures/M3/div_field1}\includegraphics[scale=0.15]{figures/M3/div_field2}\includegraphics[scale=0.15]{figures/M3/div_field3}\includegraphics[scale=0.15]{figures/M3/div_field4}
+\includegraphics[scale=0.15]{../figures/M3/div_field1}\includegraphics[scale=0.15]{../figures/M3/div_field2}\includegraphics[scale=0.15]{../figures/M3/div_field3}\includegraphics[scale=0.15]{../figures/M3/div_field4}
 \par\end{center}
 
 \url{http://citadel.sjfc.edu/faculty/kgreen/vector/block2/del_op/node5.html}
@@ -508,7 +504,7 @@ of the plane} over which the circulation occurs: the curl is by definition
 could also have a rotational component 
 \end{itemize}
 \begin{center}
-\includegraphics[scale=0.15]{figures/M3/div_field1}\includegraphics[scale=0.15]{figures/M3/div_field2}\includegraphics[scale=0.15]{figures/M3/div_field3}\includegraphics[scale=0.15]{figures/M3/div_field4}
+\includegraphics[scale=0.15]{../figures/M3/div_field1}\includegraphics[scale=0.15]{../figures/M3/div_field2}\includegraphics[scale=0.15]{../figures/M3/div_field3}\includegraphics[scale=0.15]{../figures/M3/div_field4}
 \par\end{center}
 
 \url{http://citadel.sjfc.edu/faculty/kgreen/vector/block2/del_op/node9.html}
