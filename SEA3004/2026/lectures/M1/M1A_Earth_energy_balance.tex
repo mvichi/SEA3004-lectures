@@ -1,0 +1,332 @@
+%% LyX 2.3.6 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english,aspectratio=169]{beamer}
+\usepackage{lmodern}
+\renewcommand{\sfdefault}{lmss}
+\renewcommand{\ttdefault}{lmtt}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{babel}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\ifx\hypersetup\undefined
+  \AtBeginDocument{%
+    \hypersetup{unicode=true}
+  }
+\else
+  \hypersetup{unicode=true}
+\fi
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\pdfpageheight\paperheight
+\pdfpagewidth\paperwidth
+
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+%\usetheme{CambridgeUS}
+%\usetheme{Singapore}
+\usetheme{Warsaw}
+\usecolortheme{beaver}
+\hypersetup{pdfpagemode=None}
+\usepackage{tikz}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{multicol}
+\setbeamertemplate{footline}[frame number]
+
+\makeatother
+
+\begin{document}
+\title[ESS methods]{Earth energy budget}
+\author{Magata J Mangatane}
+\institute[UCT]{Department of Oceanography\\University of Cape Town\\mngmag002@myuct.ac.za}
+\date{SEA3004F}
+\makebeamertitle
+
+\section{Earth energy budget}
+
+\begin{frame}{Where does the energy go?}
+\begin{columns}[t]
+
+\column{8cm}
+\begin{itemize}
+\item <1->{\footnotesize{}First Law of Thermodynamics states that energy cannot be created or destroyed, only transformed or transferred.}
+\item <2->{\footnotesize{}The change in internal energy of a system equals the net heat transfer into the system minus the net work done by the system}
+\item <3->{\footnotesize{}In equation form: }\textbf{\footnotesize{}$\Delta U = Q - W$}{\footnotesize{}.}
+\item <4->{\footnotesize{}This formulation is a specific expression of the conservation of energy}{\footnotesize\par}
+{\footnotesize{}\uline{\href{https://teksguide.org/resource/151-first-law-thermodynamics}{Further Reading}}}{\footnotesize{}.}{\footnotesize\par}
+\end{itemize}
+
+\column{7cm}
+
+\includegraphics[width=7cm]{SEA3004/2026/figures/Energy_conservation}
+\end{columns}
+
+\end{frame}
+%
+\begin{frame}{Recap: the global heat budget}
+
+\includegraphics[height=0.75\paperheight]{SEA3004/2026/figures/energy_budget}
+\end{frame}
+
+\begin{frame}{Where does the energy go?}
+\begin{columns}[t]
+
+\column{8cm}
+\begin{itemize}
+\item <1->{\footnotesize{}Human-induced atmospheric composition changes
+cause a radiative imbalance at the top of the Earth atmosphere which
+is driving global warming (}{\footnotesize{}\uline{\href{https://doi.org/10.5194/essd-12-2013-2020}{von Schuckmann et al., 2020}}}{\footnotesize{}).
+This quantity is called the }\textbf{\footnotesize{}Earth Energy Imbalance
+(EEI)}{\footnotesize{}, and it is largely driven by the radiative
+effect of excessive CO$_{2}$.} 
+\item <2->{\footnotesize{}A zero-balance would maintain a stable }\textbf{\footnotesize{}planetary
+temperature}{\footnotesize{}. A surplus leads to heat storage in various
+parts of the ES and warming.} 
+\item <3->{\footnotesize{}Knowing this imbalance would inform us how much
+CO$_{2}$ we need to remove to attain the target temperature of the
+}{\footnotesize{}\uline{\href{https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement}{Paris Agreement}}}{\footnotesize{}.}{\footnotesize\par}
+\end{itemize}
+
+\column{7cm}
+
+\includegraphics[width=7cm]{SEA2004/figures/EEI_fig8}
+\end{columns}
+
+\end{frame}
+%
+
+
+\begin{frame}{The radiative balance at the top of the atmosphere (TOA)}
+
+\begin{columns}[t]
+
+
+\column{7cm}
+\begin{itemize}
+\item <1->{\footnotesize{}(a) The red solid line is the intensity of incoming
+solar radiation and the red dashed line is the intensity of radiation
+lost to space (both determined using satellite-borne radiometer).
+(i) the northern summer and (ii) the southern summer}{\footnotesize\par}
+\item <2->{\footnotesize{}(b) The average temperature of surface waters
+at different latitudes. At a given latitude, there will be surface
+waters whose annual mean temperatures are higher or lower than shown
+by the curve; this range is represented by the thickness of the pink
+envelope. }\emph{\footnotesize{}(think about the reason why the x-axis
+is not linear...)}{\footnotesize\par}
+\end{itemize}
+
+\column{5cm}
+
+\includegraphics[width=5cm]{SEA2004/figures/radiation_balance}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{OLR: Outgoing Longwave Radiation}
+
+\begin{columns}[t]
+
+
+\column{6cm}
+\begin{itemize}
+\item {\scriptsize{}The OLR is the total IR at wavelengths of 5 to 100 $\mu$m
+that escapes from the top of Earth\textquoteright s atmosphere back
+into space.}{\scriptsize\par}
+\item {\scriptsize{}Assuming blackbody radiation, the OLR is a measure of
+the temperature of the emitting bodies. }{\scriptsize\par}
+\item {\scriptsize{}Measured OLR is not referred to the surface and must
+be interpreted with due care. High OLR is usually due to warm surface
+or low clouds (usually found on the Atlantic coast of SA). Low OLR
+is due to the top of deep convective clouds which is cold (regions
+of heavy rainfall). }{\scriptsize\par}
+\end{itemize}
+
+\column{7cm}
+\begin{center}
+\vspace{-1cm}
+\includegraphics[width=6cm]{SEA2004/figures/OLR}
+\par\end{center}
+
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Surface heat flux balance over the ocean}
+
+\begin{columns}[t]
+
+
+\column{7.5cm}
+\begin{itemize}
+\item <1->The heat balance at the ocean surface is
+\[
+Q_{T}=Q_{s}+Q_{b}+Q_{e}+Q_{h}
+\]
+
+\begin{itemize}
+\item <2->$Q_{s}$ = net rate of incoming (solar) shortwave radiation
+\item <3->$Q_{b}$ = net rate of heat loss by the ocean as longwave radiation 
+\item <4->$Q_{h}$ = rate of heat loss or gain due to conduction at the
+surface (sensible heat flux)
+\item <5->$Q_{e}$ = rate of heat loss or gain by the ocean through evaporation
+or condensation (latent heat flux) 
+\end{itemize}
+\end{itemize}
+
+\column{6cm}
+\begin{center}
+\includegraphics[width=6.5cm]{SEA2004/figures/heat_balance_surface}
+\par\end{center}
+
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Water heat and water temperature}
+
+\begin{columns}[c]
+
+
+\column{7.5cm}
+\begin{itemize}
+\item {\scriptsize{}Heat is a measure of how many molecules are vibrating
+and how rapidly they are vibrating. Temperature records only how rapidly
+the molecules of a substance are vibrating. }\textbf{\scriptsize{}Temperature
+is an object\textquoteright s response to the input (or removal) of
+heat}{\scriptsize\par}
+\end{itemize}
+\begin{center}
+\vspace{-0.2cm}
+\includegraphics[width=6.5cm]{SEA2004/figures/heat_capacity}
+\par\end{center}
+
+\column{7cm}
+
+\begin{onlyenv}<2->
+\begin{center}
+{\tiny{}\vspace{-1cm}
+}%
+\begin{tabular}{|c|c|}
+\hline 
+\textbf{\tiny{}Substance} & \textbf{\tiny{}Heat capacity}\tabularnewline
+ & {\tiny{}cal g$^{-1}$ $K^{-1}$}\tabularnewline
+\hline 
+\hline 
+{\tiny{}Silver} & {\tiny{}0.06}\tabularnewline
+\hline 
+{\tiny{}Granite (or sand)} & {\tiny{}0.20}\tabularnewline
+\hline 
+{\tiny{}Aluminum} & {\tiny{}0.22}\tabularnewline
+\hline 
+{\tiny{}Alcohol (ethyl)} & {\tiny{}0.30}\tabularnewline
+\hline 
+{\tiny{}Gasoline} & {\tiny{}0.50}\tabularnewline
+\hline 
+\textbf{\tiny{}Pure water} & \textbf{\tiny{}1.00}\tabularnewline
+\hline 
+{\tiny{}Ammonia (liquid)} & {\tiny{}1.13}\tabularnewline
+\hline 
+\end{tabular}{\tiny\par}
+\par\end{center}
+\begin{itemize}
+\item {\scriptsize{}Water has an extraordinarily high specific heat capacity
+($c_{p}$, constant pressure): it resists changing temperature when
+heat is added or removed. During phase changes, a large amount of
+heat is required before seeing a change in temperature: these amounts
+are the ``hidden'' }\textbf{\scriptsize{}latent heat of fusion and
+vaporization}{\scriptsize\par}
+\end{itemize}
+\end{onlyenv}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Seasonal cycle of short wave radiation {[}W m$^{2}${]}}
+
+\includegraphics[scale=0.45]{SEA2004/figures/shortwave}
+\end{frame}
+
+\begin{frame}{Zonally averaged annual fluxes {[}PW{]}}
+
+\includegraphics[scale=0.45]{SEA2004/figures/zonal_fluxes}
+\end{frame}
+
+\begin{frame}{Surplus and deficit of energy}
+
+\includegraphics[scale=0.3]{SEA2004/figures/heat_surplus}
+\end{frame}
+
+
+\subsection{Ocean heat transport}
+
+
+\begin{frame}{Energy transfer is obtained through circulation}
+
+\begin{itemize}
+\item <1->The solar input drives the oceanic circulation through the atmosphere.
+Both are affected by the Earth rotation. Energy (momentum) is transferred
+from winds to the upper layers of the ocean through \textbf{frictional
+coupling} between the ocean and the atmosphere at the sea surface
+\item <2->The Sun also drives ocean circulation by causing variations in
+the temperature and salinity of seawater which in turn control its
+density. These processes drive the \textbf{thermohaline circulation}.
+Changes in temperature are caused by fluxes of heat across the air-sea
+boundary; changes in salinity are due to evaporation and precipitation,
+but also, in polar regions, by the freezing and melting of ice. 
+\item <3->All of these processes are linked directly or indirectly to the
+effect of solar radiation and the related \textbf{heat and momentum
+fluxes} at the surface. (suggested reading: Ocean Circulation, Open
+University)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Energy transport in the Earth system}
+
+\begin{columns}[t]
+
+
+\column{5cm}
+\begin{itemize}
+\item {\footnotesize{}The }\textbf{\footnotesize{}engine}{\footnotesize{}
+of the Earth system is the }\textbf{\footnotesize{}Sun }{\footnotesize{}and
+the Earth is in}\textbf{\footnotesize{} energy balance}{\footnotesize\par}
+\item {\footnotesize{}The }\textbf{\footnotesize{}large scale circulation}{\footnotesize{}
+of the ocean and atmosphere can be described by applying physical
+principles of }\textbf{\footnotesize{}geophysical fluid dynamics}{\footnotesize{}
+(3rd year)}{\footnotesize\par}
+\end{itemize}
+
+\column{9cm}
+
+\includegraphics[width=8.3cm]{SEA2004/figures/heat-redistribution}
+\begin{itemize}
+\item \textbf{\footnotesize{}Heat is transported}{\footnotesize{} from the
+equator to the poles through a network of atmospheric cells and ocean
+currents}{\footnotesize\par}
+\end{itemize}
+\end{columns}
+
+\end{frame}
+
+\end{document}

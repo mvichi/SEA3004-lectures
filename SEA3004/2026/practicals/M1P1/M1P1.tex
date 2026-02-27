@@ -1,0 +1,87 @@
+% MATLAB Practical: Vector manipulation
+% This practical follows an introduction to MATLAB coding.
+% It is designed for the students to practice:
+% - Vectors and vector operations
+% - Element-wise calculations
+% - Plotting a simple function
+
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\title{Module 1 Practical 1: MATLAB in Oceanography}
+\author{}
+\date{Date: 16-02-2026}
+
+\begin{document}
+\maketitle
+
+\section*{Instructions}
+\begin{itemize}
+    \item Complete all questions in a Live Script .
+    \item Comment all necessary steps.
+    \item Save your script as: \texttt{student\_number }.
+    \item Each main question carries 5 marks. The bonus is 2 marks.
+\end{itemize}
+
+\section*{Question 1: Wave Velocity Vector Operations (5 marks)}
+Given a simple ocean wave with horizontal velocity components $u$ (x-direction) and $v$ (y-direction):
+
+\textbf{Tasks:}
+\begin{enumerate}
+    \item Define $u$ and $v$ as vectors for a wave with 5 points along the wave crest:
+    \[
+    u = (0.5, 0.7, 0.6, 0.4, 0.3), \quad
+    v = (0.2, 0.3, 0.1, 0.0, -0.1)
+    \]
+    \item Calculate the \textbf{speed} of the wave at each point using:
+    \[
+    \text{speed} = \sqrt{u^2 + v^2}
+    \]
+    \item Display the result within the live editor.
+\end{enumerate}
+
+\textbf{Hints:} Use element-wise operations and a function for the square root and display.
+
+
+\section*{Question 2: Wave Height as a Function of Time (5 marks)}
+Consider a simple sinusoidal wave with height $H(t)$ given by:
+\[
+H(t) = 2 \sin(2 \pi f t)
+\]
+where $f = 0.5$ Hz, and $t$ is time in seconds.
+
+\textbf{Tasks:}
+\begin{enumerate}
+    \item Define \texttt{t} as a vector from 0 to 10 seconds in intervals of 0.1 s.
+    \item Compute the corresponding wave height vector \texttt{H}.
+\end{enumerate}
+
+\textbf{Hints:} Use \verb|sin()| and \verb|pi|. Remember MATLAB operates element-wise on vectors.
+
+
+\section*{Question 3: Plot Wave Height vs Time (5 marks)}
+\textbf{Tasks:}
+\begin{enumerate}
+    \item Plot wave height \texttt{H} against time \texttt{t}.
+    \item Label the axes and add a title.
+    \item Set the grid on for clarity.
+\end{enumerate}
+
+\section*{Bonus Question (2 marks)}
+Retrieve the wave height at a specific time, e.g., \texttt{t = 3.5 s}.
+
+\textbf{Hint:} Use indexing to find the correct element in the vector \texttt{H}.
+
+\begin{verbatim}
+Ensure your script is saved correctly and submission is done through Amathuba
+\end{verbatim}
+
+\end{document}
