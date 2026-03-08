@@ -1,0 +1,165 @@
+%% LyX 2.3.6 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[a4paper,english]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amsbsy}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\pdfpageheight\paperheight
+\pdfpagewidth\paperwidth
+
+
+\makeatother
+
+\usepackage{babel}
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Listing}
+
+\begin{document}
+\title{SEA3004F M3P2: Masking, divergence, and curl }
+\date{Ocean and Atmosphere Dynamics}
+\maketitle
+
+\section{Tutorial 1: array masking [10]}
+
+Download all files and put them in a folder on your computer. Open
+Matlab and navigate to that folder.
+
+Fields in earth sciences may not have data at all grid points. Missing
+values can represent land points (a mask), lack of measurements or
+information and non-representable numbers coming from numerical errors.
+The latter case was highlighted in the previous practical, in which
+the computation of the numerical gradient with values close to 0 led
+to indefinite numbers. It is often sufficient to change the ranges
+and/or color scales of the visualization, but a more effective solution
+is to mask the data.
+
+Masked data are usually identified with a special number, which in
+most computing software is called Not-A-Number (\texttt{NaN}).
+In this tutorial, we will learn how to replace certain values of the
+field with the missing value NaN (a method called ``logical indexing'').
+
+File \texttt{NCEP\_wind\_matlab.mat} contains the global climatological
+wind field (u and v components) from the NCEP atmospheric reanalyses
+(1981-2010). This dataset contains two types of coordinates (geographical
+and geodetic), as well as an additional array that contains the land
+mask. 
+
+We will first compute the wind speed and then mask the land points
+using the provided array \texttt{land}. We will then plot the same
+wind speed field using first latitude/longitude and then distances
+on the sphere (using the same arrays analysed in the previous tutorial).
+
+\begin{lstlisting}[language=Matlab,basicstyle={\small},showstringspaces=false,frame=lines]
+load NCEP_wind_matlab.mat
+% first visualize the land array using pcolor
+
+<your command here>
+
+% compute the wind speed
+wndsp=sqrt(uwnd.^2+vwnd.^2);
+% create a mask containing land data
+wndsp(land==1)=NaN; % What type of array is this one?
+
+% Plot wind speed using 2 different coordinate systems 
+figure
+subplot(2,1,1)
+pcolor(lon,lat,wndsp)
+axis tight
+colorbar
+shading flat
+grid on
+title('NCEP Wind speed annual mean (m/s)')
+xlabel('Longitude')
+ylabel('Latitude')
+subplot(2,1,2)
+pcolor(Xkm,Ykm,wndsp)
+axis tight
+colorbar
+title('NCEP Wind speed annual mean (m/s)')
+xlabel('Distance (km)')
+ylabel('Distance (km)')
+\end{lstlisting}
+
+
+\section{Tutorial 2: curl of a vector field [10]}
+
+In this tutorial we will plot an analytical vector field, which represents
+some circulation patterns in geophysical fluid dynamics, and we will
+compute the vertical component of the curl (sometimes indicated as
+$\mathsf{curl}_{z}$)
+\[
+\boldsymbol{\hat{k}}\cdot\boldsymbol{\nabla\times}\mathbf{F}=\frac{\partial F_{y}}{\partial x}-\frac{\partial F_{x}}{\partial y}
+\]
+
+The vector field is 
+\[
+\mathbf{F}\left(x,y\right)=\sin\left(x+2y\right)\hat{\mathbf{i}}+\cos\left(x-2y\right)\hat{\mathbf{j}}
+\]
+where $x\in\left[-2,2\right]$ and $y\in\left[-2,2\right]$ in discrete
+steps of 0.25. Notice the use of function \texttt{colorposneg} to
+produce a positive/negative colorbar.
+
+\begin{lstlisting}[language=Matlab,basicstyle={\small},showstringspaces=false,frame=lines]
+% First create the axes
+x=-2:.25:2;
+y=-2:.25:2;
+[X,Y]=meshgrid(x,y);
+% Define the components of the vector field
+Fx=sin(X+2*Y);
+Fy=cos(X-2*Y);
+
+% Graph the vector field using the quiver function
+figure
+quiver(X,Y,Fx,Fy,'k')
+title('Velocity field')
+axis equal
+axis tight
+
+% Compute, graph the curl and overlay the vectors
+figure
+C = curl(X,Y,Fx,Fy);
+pcolor(X,Y,C)
+axis equal
+axis tight
+hold
+quiver(X,Y,Fx,Fy,'k')
+title('Velocity field and curl')
+colorposneg
+colorbar
+
+% optional for printing the figure
+print -dpng vector_field_curl.png
+\end{lstlisting}
+
+
+\section{Exercise 1: divergence of a vector field {[}20{]}}
+
+Given the vector field $\mathbf{F}\left(x,y\right)=-2x\hat{\mathbf{i}}-2y\hat{\mathbf{j}}$
+, where $x\in\left[-10,10\right]$ and $y\in\left[-10,10\right]$.
+\begin{enumerate}
+\item {[}10{]} Compute the divergence $\boldsymbol{\nabla}\cdot\mathbf{F}$
+analytically (you can use the equation editor of the word processor
+or include a picture of your calculations on paper) .
+\item {[}10{]} Compare the result above with the one obtained using the function \texttt{divergence}. Carefully read the help on how
+to use it. Plot it graphically and overlay the vector field; save
+the figure.
+\end{enumerate}
+
+\section{Exercise 2: wind stress curl {[}40{]}}
+
+Use the wind data in file \texttt{NCEP\_wind\_matlab.mat} to calculate
+and plot the climatological annual wind stress curl. You will have
+to create the following two separate figures
+\begin{enumerate}
+\item A \textbf{masked} latitude/longitude map of wind stress, first computing the wind stress components (use a value of the drag coefficient $C_{D}=1.5\:10^{-3}$) and then the intensity as done in Tutorial 1 above. Add all the labels and the colorbar. Indicate the proper units in the title. [15]
+\item A \textbf{masked} latitude/longitude map of the wind stress curl, using the wind stress components calculated above and Tutorial 2 for guidelines on how to compute the curl. Remember that distances must be in m. Add all the labels and the colorbar. Indicate the proper
+units in the title. In the caption to this figure, briefly illustrate
+which oceanographic regions show the largest/lowest values of the
+curl. [25]
+\end{enumerate}
+
+\end{document}
