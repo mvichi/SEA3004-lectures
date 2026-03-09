@@ -65,14 +65,11 @@
 \begin{frame}{Scalar and vector operators (i)}
 
 \begin{itemize}
-\item It is possible and useful to describe any scalar and vector field (sea surface temperature in the South Atlantic or the Benguela velocity
-field) by means of certain operators that provide quantitative indications of their features
+\item It is possible to perform operators on scalar and vector fields (sea surface temperature in the South Atlantic or the Benguela velocity
+field) and to obtain useful quantitative features
 \item This is simpler to understand in the case of a mountain topography or bathymetry along the coast: how do we know the steepness of the mountain we are going to climb?
-\item In the case of vector fields we will find out that some major relationships
-between wind and currents can be obtained by rearranging the dynamical
-equations using \textbf{vector operators}
-\item A fully guided introduction to multi-variate scalar and vector functions
-is available at the Khan Academy \url{https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives}
+\item In the case of vector fields we will find that some major relationships between wind and currents can be obtained by rearranging the dynamical equations using \textbf{vector operators}
+\item A fully guided introduction to multi-variate scalar and vector functions is available at Khan Academy \url{https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives}
 \end{itemize}
 \end{frame}
 
@@ -90,6 +87,68 @@ produces vector fields
 
 \end{frame}
 
+\begin{frame}{Examples of mathematical vector fields}
+
+\begin{columns}[t]
+
+
+\column{8cm}
+
+\includegraphics[width=10cm]{../../../2025/figures/M3/example_vector_field}
+
+\column{4cm}
+\begin{itemize}
+\item A vector field is a function that \textbf{assigns a vector} to each
+point on the coordinate plane
+\item For every pair of coordinates, the function gives the components of
+the vector
+\[
+\boldsymbol{F}\left(x,y\right)=x\boldsymbol{i}+y\boldsymbol{j}
+\]
+\end{itemize}
+\end{columns}
+
+\end{frame}
+
+
+
+\begin{frame}{A mathematical vector field in matlab}
+Matlab allows to graph 2D fields, using the \texttt{pcolor} function for scalars and the \texttt{quiver} function for vectors. 
+
+In both cases, we need a system of coordinates corresponding to the location of the points on the plane. Here is an example of a vector
+field represented by the vector function 
+\begin{align*}
+\mathbf{F}\left(x,y\right) & \equiv\left(F_{1},F_{2}\right)=\frac{1}{x^{2}+y^{2}}\left(-10y\hat{\mathbf{i}}+8x\hat{\mathbf{j}}\right)\\
+F_{1}\left(x,y\right) & =-\frac{10y}{x^{2}+y^{2}}\\
+F_{2}\left(x,y\right) & =\frac{8x}{x^{2}+y^{2}}
+\end{align*}
+
+To draw the function we need to define a discrete ``mapping'' of
+the Cartesian plane. We will then define two arrays of 21 points each
+and then create a mesh that we will use to locate the value (color)
+or the vector. Remember that in matlab/octave the elementwise \texttt{{*}}
+and \texttt{/} operators between matrices are indicated by the symbols \texttt{.{*}} and \texttt{./. }
+
+\end{frame}
+
+\begin{frame}[fragile]{The code}
+
+\begin{lstlisting}[language=Matlab,basicstyle={\small},showstringspaces=false,frame=lines]
+>> x=-10:10; y=-10:10;
+>> [X,Y]=meshgrid(x,y); % this function creates the plane
+% Create the scalar components of the vector field
+>> F1 = -10*Y./(X.^2+Y.^2);
+>> F2 = 8*X./(X.^2+Y.^2);
+>> figure
+>> pcolor(F1)             % or pcolor(F2)
+>> colorbar
+% Graph the vector field using the quiver function
+>> figure
+>> quiver(X,Y,F1,F2)
+>> title('Cyclone in the Northern Hemisphere')
+\end{lstlisting}
+
+\end{frame}
 
 \begin{frame}{Warning: Matrix and Cartesian coordinates}
 
